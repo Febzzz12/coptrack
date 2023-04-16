@@ -1,0 +1,73 @@
+{% extends 'userbase.html' %}
+{% block header %}
+<html>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #252b296b;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>NAME</td>
+            <td>DOB</td>
+            <td>AADHAR NUMBER</td>
+            <td>VOTER ID</td>
+            <td>ADDRESS</td>
+            <td>PHONE</td>
+            <td>PLACE</td>
+            <td>PINCODE</td>
+            <td>SPECIALIZATION</td>
+            <td>POLICE STATION</td>
+            <td>IMAGE</td>
+            <td>ACTION</td>
+
+
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{d.1}}</td>
+            <td>{{d.2}}</td>
+            <td>{{d.3}}</td>
+            <td>{{d.4}}</td>
+            <td>{{d.5}}</td>
+            <td>{{d.6}}</td>
+            <td>{{d.7}}</td>
+            <td>{{d.8}}</td>
+            <td>{{d.9}}</td>
+            <td>{{d.10}}</td>
+            <td><img src="../static/{{d.11}}" width="30px" height="30px"></td>
+            <td><a href="/userbooklabour/?id={{d.0}}">BOOK</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+</div>
+
+{% endblock %}

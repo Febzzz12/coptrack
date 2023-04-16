@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block header %}
+<html>
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 50px;
+
+        }
+
+        label {
+            width: 300px;
+        }
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=password],
+        input[type=email] {
+            width: 300px;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+
+        /* Set a style for the submit button */
+        .submit {
+            background-color: #0a0a0a;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 300px;
+            opacity: 0.9;
+        }
+
+        .submit:hover {
+            opacity: 1;
+        }
+
+        /* Add a blue text color to links */
+        a {
+            color: dodgerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <center>
+                <!-- <center>
+                    <h1 style="color:yellow;"><b>{{msg}}</b></h1>
+                </center> -->
+                {% if msg %}
+                <script>alert('{{msg}}');</script>
+                {% endif %}
+                <div>
+                    <div>
+                        <label>USERNAME:</label>
+                        <input type="text" name="name" Placeholder="USERNAME" required="">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>PASSWORD:</label>
+                        <input type="password" name="password" Placeholder="PASSWORD" required="">
+                    </div>
+                </div>
+                <input type="submit" name="submit" value="SUBMIT" class="submit">
+                <br>
+            </center>
+        </form>
+    </div>
+</body>
+
+</html>
+{% endblock %}

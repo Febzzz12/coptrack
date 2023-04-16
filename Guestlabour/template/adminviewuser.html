@@ -1,0 +1,59 @@
+{% extends 'adminbase.html' %}
+{% block header %}
+<html>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #252b296b;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+
+<form method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>NAME</td>
+            <td>ADDRESS</td>
+            <td>PLACE</td>
+            <td>PHONE</td>
+            <td>EMAIL</td>
+            <td>PINCODE</td>
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{d.1}}</td>
+            <td>{{d.2}}</td>
+            <td>{{d.3}}</td>
+            <td>{{d.4}}</td>
+            <td>{{d.5}}</td>
+            <td>{{d.6}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+</div>
+
+{% endblock %}

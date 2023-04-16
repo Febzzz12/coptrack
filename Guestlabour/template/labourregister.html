@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block header %}
+<html>
+
+<head>
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 50px;
+           
+        }
+        label{
+            width: 300px;
+        }
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=password],
+        input[type=email]{
+            width: 300px;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+        .sel{
+            width: 300px;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+
+        }
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+
+        /* Set a style for the submit button */
+        .submit {
+            background-color: #0a0a0a;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 300px;
+            opacity: 0.9;
+        }
+
+        .submit:hover {
+            opacity: 1;
+        }
+
+        /* Add a blue text color to links */
+        a {
+            color: dodgerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <center>
+                <center>
+                    <h1 style="color:yellow;"><b>{{msg}}</b></h1>
+                </center>
+                <div>
+                    <div>
+                        <label>Name:</label>
+                        <input type="text" name="name" Placeholder=" "  required="">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>DOB:</label>
+                        <input type="date" name="age" Placeholder=" " required="">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Aadhar Number:</label>
+                        <input type="text" name="aadhar" maxlength="12" Placeholder=" " required="">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Voter Id:</label>
+                        <input type="text" name="voterid" Placeholder=" " required="">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Address:</label>
+                        <input type="text" name="address" Placeholder=" " required="">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Phone:</label>
+                        <input type="text" name="phone" Placeholder=" "  required="" pattern="[0-9]{10}">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Place:</label>
+                        <input type="text" name="place" Placeholder=" " required="">
+                    </div>
+                </div>
+                
+                <div>
+                    <div>
+                        <label>Pincode:</label>
+                        <input type="text" name="pincode" title="please enter 6 characters" pattern="[0-9]{6}" Placeholder=" "  required="">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password" Placeholder=" "  required="">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Designation:</label>
+                        <select name="desig" class="sel">
+                            <option value="All">ALL TYPE</option>
+                            <option value="Cleaning">Cleaning </option>
+                            <option value="Cleaning">Gradening </option>
+                            <option value="Cleaning">Plumber </option>
+                            <!-- <option value="Kozhikode">Kozhikode</option>
+                            <option value="Malappuram ">Malappuram </option>
+                            <option value="Wayanad ">Wayanad</option>
+                            <option value="Ernakulam">Ernakulam </option>
+                            <option value="Ernakulam">Ernakulam</option> -->
+
+
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Near Station:</label>
+                        <select name="police" class="sel">
+                            {% for d in data1 %}
+                            <option value="{{d.1}}">{{d.1}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" name="submit" value="submit" class="submit">
+                <br>
+            </center>
+        </form>
+    </div>
+</body>
+
+</html>
+{% endblock %}

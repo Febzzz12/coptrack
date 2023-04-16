@@ -1,0 +1,98 @@
+{% extends 'userbase.html' %}
+{% block header %}
+<html>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 75%;
+            margin-top: 30px;
+        }
+
+        th,
+        td {
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #252b296b;
+            color: white;
+        }
+
+        .custom-select {
+            position: relative;
+            font-family: Arial;
+            width: 300px;
+
+        }
+
+        input[type=text] {
+            width: 300px;
+
+        }
+
+        .submit {
+            background-color: #0a0a0a;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 300px;
+            opacity: 0.9;
+        }
+
+        .submit:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+<center>
+    <h1 style="color:red"><b>{{msg}}<b></h1>
+</center>
+<center>
+<form method="post">
+    {% csrf_token %}
+    <table class="table">
+
+        <tr>
+            <td>COMPLAINT
+                <br>
+            <textarea rows="5" cols="50" name="complaint" required="" style="margin-top: 30px;"></textarea></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="submit" value="submit" class="submit"></td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td>COMPLAINT</td>
+            <td>DATE</td>
+            <td>REPLY</td>
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{d.1}}</td>
+            <td>{{d.2}}</td>
+            <td>{{d.3}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+</center>
+
+</body>
+
+</html>
+{% endblock %}

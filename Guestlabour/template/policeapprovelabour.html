@@ -1,0 +1,122 @@
+{% extends 'policebase.html' %}
+{% block header %}
+<html>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 50px auto;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        th,
+        td {
+            text-align: center;
+            padding: 8px;
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #252b296b;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <form method="post">
+            <caption><h1>Labour Requests</h1></caption>
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>NAME</td>
+                    <td>DOB</td>
+                    <td>AADHAR NUMBER</td>
+                    <td>VOTER ID</td>
+                    <td>ADDRESS</td>
+                    <td>PHONE</td>
+                    <td>PLACE</td>
+                    <td>PINCODE</td>
+                    <td>SPECIALIZATION</td>
+                    <td>POLICE STATION</td>
+                    <td>STATUS</td>
+                    <td colspan="2">ACTION</td>
+                </tr>
+                {% for d in data %}
+                <tr>
+                    <td>{{d.1}}</td>
+                    <td>{{d.2}}</td>
+                    <td>{{d.3}}</td>
+                    <td>{{d.4}}</td>
+                    <td>{{d.5}}</td>
+                    <td>{{d.6}}</td>
+                    <td>{{d.7}}</td>
+                    <td>{{d.8}}</td>
+                    <td>{{d.9}}</td>
+                    <td>{{d.10}}</td>
+                    <td>{{d.11}}</td>
+                    <td><a class="btn btn-success" href="/policeapproved/?id={{d.0}}&em={{d.1}}">VERIFY</a></td>
+                    <td><a class="btn btn-danger" href="/policereject/?id={{d.0}}&em={{d.1}}">REJECT</a></td>
+
+
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+
+
+        <form method="post">
+           
+            <caption><h1>Approved Labours</h1></caption>
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>NAME</td>
+                    <td>DOB</td>
+                    <td>AADHAR NUMBER</td>
+                    <td>VOTER ID</td>
+                    <td>ADDRESS</td>
+                    <td>PHONE</td>
+                    <td>PLACE</td>
+                    <td>PINCODE</td>
+                    <td>SPECIALIZATION</td>
+                    <td>POLICE STATION</td>
+                    <td>STATUS</td>
+                </tr>
+                {% for d in data2 %}
+                <tr>
+                    <td>{{d.1}}</td>
+                    <td>{{d.2}}</td>
+                    <td>{{d.3}}</td>
+                    <td>{{d.4}}</td>
+                    <td>{{d.5}}</td>
+                    <td>{{d.6}}</td>
+                    <td>{{d.7}}</td>
+                    <td>{{d.8}}</td>
+                    <td>{{d.9}}</td>
+                    <td>{{d.10}}</td>
+                    <td>{{d.11}}</td>
+
+
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+
+
+
+
+
+
+
+    </center>
+
+    {% endblock %}
