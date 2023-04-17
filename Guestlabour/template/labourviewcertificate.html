@@ -30,12 +30,16 @@ img {
 <center>
 {% for d in data %}
 <div class="card">
-  <a href="../static/img{{d.13}}" download><img src="../static/img{{d.13}}" alt="No Image" style="width:30% "></a>
+  
   <div class="container">
-    <h4><b>{{d.1}}</b></h4> 
-    <p>{{d.2}}  {{d.6}}</p> 
-    <p>{{d.5}}</p> 
-    <p>{{d.7}} {{d.8}}</p> 
+    
+         
+    <h4><b>NAME :{{d.1}}</b></h4> 
+    <p>DOB :{{d.2}} </p>
+    <p>Aadhaar No : {{d.6}}</p> 
+    <p>ADDRESS :{{d.5}}</p> 
+    <p>PLACE :{{d.7}} </p>
+    <p>PIN CODE :{{d.8}}</p> 
     <button onclick="window.print()" style="background-color: rgba(5, 73, 5, 0.725); border-radius:5px;">Download</button>
   </div>
 </div>
